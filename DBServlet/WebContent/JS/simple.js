@@ -1,0 +1,1 @@
+window.setInterval(function(){document.body.style.backgroundColor="rgb("+(((Math.random()*1000)|0)%255)+","+(((Math.random()*1000)|0)%255)+","+(((Math.random()*1000)|0)%255)+")";},5000)
