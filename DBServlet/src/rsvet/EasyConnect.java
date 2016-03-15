@@ -20,12 +20,10 @@ public class EasyConnect {
 	
 	static Connection conn = null;
 	static Statement st = null;
-
 	
 	/**
 	 * Method returns Connection to Database based on static parameters - url, username, password.
-	 * For other DB providers change Class.forName("oracle.jdbc.driver.OracleDriver");
-	 * Class.forName("com.mysql.jdbc.Driver");
+	 * For other DB providers change Class.forName("oracle.jdbc.driver.OracleDriver") and add driver.jar to project.
 	 * @return Connection
 	 * @throws SQLException
 	 */
