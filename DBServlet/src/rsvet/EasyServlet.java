@@ -12,6 +12,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Through this Servlet we are getting info from Database.
+ * Start Servlet page - http://server:port/DBServlet/show
+ * 
+ */
+
 public class EasyServlet extends HttpServlet {
 	
 	public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {	
