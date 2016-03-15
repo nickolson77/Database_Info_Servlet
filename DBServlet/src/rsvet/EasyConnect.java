@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class EasyConnect {
 	
-	// статические параметры подключения к БД
+	// static parameters for Database connection
 	static String url = "jdbc:oracle:thin:@ebsproj8.russvet.ru:1561:WMS12";
 	static String username = "apps";
 	static String password = "apps";
@@ -21,7 +21,14 @@ public class EasyConnect {
 	static Connection conn = null;
 	static Statement st = null;
 
-	//метод соединяется с БД и возвращает Connection 
+	
+	/**
+	 * Method returns Connection to Database based on static parameters - url, username, password.
+	 * For other DB providers change Class.forName("oracle.jdbc.driver.OracleDriver");
+	 * Class.forName("com.mysql.jdbc.Driver");
+	 * @return Connection
+	 * @throws SQLException
+	 */
 	public static Connection getConnectionDB() throws SQLException {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -38,12 +45,19 @@ public class EasyConnect {
 		return conn;
 	}
 
-	//метод возвращает коллекцию с именами таблиц 
+	
+	/**
+	 * Method returns Database table names based on "query":
+	 * for Oracle "select table_name from all_tables"
+	 * for MySQL "SHOW TABLES"
+	 * @return ArrayList<String> - names of DB tables
+	 * @throws SQLException
+	 */
 	public static ArrayList<String> getTableNames() throws SQLException {
 
 		ArrayList<String> tableNamesArray = new ArrayList<String>();
 		Connection conn = getConnectionDB();
-		String query = "select table_name from all_tables where table_name like '%FND_USER%'";
+		String query = "select table_name from all_tables";
 		st = conn.createStatement();
 		ResultSet rs = st.executeQuery(query);
 		ResultSetMetaData metadata = rs.getMetaData();
@@ -58,7 +72,12 @@ public class EasyConnect {
 		return tableNamesArray;
 	}
 
-	//метод возвращает коллекцию с данными из выбранной таблицы 
+	/**
+	 * Method returns collection data from choosen table
+	 * @param tname - table name
+	 * @return List<Map<String, Object>> - data from table
+	 * @throws SQLException
+	 */
 	public static List<Map<String, Object>> getTableInfo(String tname) throws SQLException {
 
 		List<Map<String, Object>> rows = new ArrayList<Map<String, Object>>();

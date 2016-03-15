@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 public class EasyServlet extends HttpServlet {
 	
 	public void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {	
-		String tname = request.getParameter("tname"); //tname - содержит имя выбранной таблицы
-		if (tname == null) { //если параметр пуст, то открываем index.jsp, где выбираем таблицу
+		String tname = request.getParameter("tname"); //tname - name of choosed table
+		if (tname == null) { //if param is null open index.jsp where choose table name
 			try {
-				ArrayList<String> tableNames = EasyConnect.getTableNames(); //получаем коллекцию с именами таблиц
+				ArrayList<String> tableNames = EasyConnect.getTableNames(); //getting collection with Database tables names
 				getServletContext().setAttribute("tableNames", tableNames);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -29,7 +29,7 @@ public class EasyServlet extends HttpServlet {
 		}
 		else{
 			try {
-				List<Map<String, Object>> rows = EasyConnect.getTableInfo(tname); //получаем коллекцию с данными из запроса 'select * from tname'
+				List<Map<String, Object>> rows = EasyConnect.getTableInfo(tname); //getting collection from choosed table 'select * from tname'
 				
 				getServletContext().setAttribute("rows", rows);
 			} catch (SQLException e) {

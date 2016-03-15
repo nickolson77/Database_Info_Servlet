@@ -9,13 +9,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Тест Русский Свет</title>
+<title>Database info servlet</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/style.css">
 </head>
 <body>
 	<center>
-		<div>Выберите название таблицы и нажмите ОК</div>
-		<!-- Выводим форму в которой выбираем имя таблицы. После нажатия на ОК передаем сервлету "tname"-->
+		<div>Choose table and click ОК</div>
+		<!-- Form for table choice. After clicking ОК pass "tname" to servlet -->
 		<form method="get" action="show">
 			<select name="tname">
 				<c:forEach items="${tableNames}" var="tableName">  
